@@ -39,6 +39,8 @@ spec:
       {{- end }}
       {{- end }}
     spec:
+      securityContext:
+        fsGroup: 1001
       affinity:
       {{- if .Values.affinity }}
 {{ toYaml .Values.affinity | indent 8 }}
@@ -60,8 +62,6 @@ spec:
               topologyKey: "kubernetes.io/hostname"
       {{- end }}
       containers:
-        securityContext:
-          fsGroup: 1001
       {{- if .Values.prometheus.jmx.enabled }}
       - name: prometheus-jmx-exporter
         image: "{{ .Values.prometheus.jmx.image }}:{{ .Values.prometheus.jmx.imageTag }}"
