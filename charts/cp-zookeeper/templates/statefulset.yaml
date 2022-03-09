@@ -60,6 +60,8 @@ spec:
               topologyKey: "kubernetes.io/hostname"
       {{- end }}
       containers:
+        securityContext:
+          fsGroup: 1001
       {{- if .Values.prometheus.jmx.enabled }}
       - name: prometheus-jmx-exporter
         image: "{{ .Values.prometheus.jmx.image }}:{{ .Values.prometheus.jmx.imageTag }}"
