@@ -21,6 +21,8 @@ spec:
   serviceName: {{ template "cp-zookeeper.fullname" . }}-headless
   podManagementPolicy: {{ .Values.podManagementPolicy }}
   replicas: {{ default 3 .Values.servers }}
+  securityContext:
+    fsGroup: 1001
   updateStrategy:
     type: {{ .Values.updateStrategy }}
   template:
@@ -39,8 +41,6 @@ spec:
       {{- end }}
       {{- end }}
     spec:
-      securityContext:
-        fsGroup: 1001
       affinity:
       {{- if .Values.affinity }}
 {{ toYaml .Values.affinity | indent 8 }}
