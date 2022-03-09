@@ -39,8 +39,8 @@ updateStrategy: RollingUpdate
 # ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
 # for Zookeeper container
 securityContext:
-  runAsUser: 10001
-  runAsGroup: 10001
+  runAsUser: 1000
+  runAsGroup: 1000
   runAsNonRoot: true
 
 ## Zookeeper Configuration
